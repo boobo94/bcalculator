@@ -1,0 +1,1 @@
+"# bcalculator"  initgit add README.mdgit commit -m "first commit"git remote add origin https://github.com/boobo94/bcalculator.gitgit push -u origin master
