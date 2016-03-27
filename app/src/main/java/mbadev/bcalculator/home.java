@@ -43,6 +43,11 @@ public class home extends AppCompatActivity {
 
             wholeNum = wholeNum + cString; // new number become old number and currentString
 
+            if(members.size()==1 && members.get(0).equals("-")){
+                members.remove(members.size() - 1);
+                wholeNum = "-"+cString;
+            }
+
             if (members.size() > 0 && !isSymbol(members.get(members.size() - 1)))
                 members.remove(members.size() - 1); // remove the last element from array
 
@@ -51,11 +56,16 @@ public class home extends AppCompatActivity {
         } else { // cString is symbol
 
             if (members.size() > 0) {
-                if (isSymbol(members.get(members.size() - 1)))
-                    members.remove(members.size() - 1);
-                members.add(cString);
+                if(members.size() == 1 && members.get(0).equals("-"))
+                    Log.i("Wrong Expression","This expression is not correct!");
+                else {
+                    if (isSymbol(members.get(members.size() - 1)))
+                        members.remove(members.size() - 1);
+                    members.add(cString);
+                }
+
             } else if (cString.equals("-")) {
-                members.add("0");
+                //members.add("0");
                 members.add(cString);
             }
             wholeNum = "";
@@ -93,7 +103,7 @@ public class home extends AppCompatActivity {
         double res = 0;
         int mSize = myArr.size();
 
-        if (mSize == 1)
+        if (mSize == 1 && !isSymbol(members.get(0)))
             res = Double.parseDouble(myArr.get(0));
 
         while (mSize != 1) {
