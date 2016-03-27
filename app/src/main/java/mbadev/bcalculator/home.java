@@ -77,7 +77,7 @@ public class home extends AppCompatActivity {
 
         if (Double.parseDouble(result) % 1 == 0)
             result = Integer.toString((int) Double.parseDouble(result));
-
+        result = nrValidation(result,members,true);
         txtResult.setText(result);
         txtCalculation.setText(result);
     }
@@ -145,8 +145,8 @@ public class home extends AppCompatActivity {
                 mSize = myArr.size();
             }
         }
-
-        return Double.toString(res);
+        String r = nrValidation(Double.toString(res),myArr,false);
+        return r;
     }
 
     public void clearCalculus() {
@@ -199,8 +199,17 @@ public class home extends AppCompatActivity {
 
     }
 
-    private void nrValidation(String nr) {
+    private String nrValidation(String nr,ArrayList<String> myArray,boolean modifyArray) {
 
+        if(Double.parseDouble(nr) % 1 ==0) {
+            nr = Integer.toString((int)Double.parseDouble(nr));
+            if(modifyArray){
+                myArray.remove(0);
+                myArray.add(nr);
+            }
+        }
+
+        return nr;
     }
 
 
