@@ -10,9 +10,6 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class home extends AppCompatActivity {
-/*
-* todo: condition for Decimal.format
-* */
 
     ArrayList<String> members = new ArrayList<>();
 
@@ -64,10 +61,9 @@ public class home extends AppCompatActivity {
                     members.add(cString);
                 }
 
-            } else if (cString.equals("-")) {
-                //members.add("0");
+            } else if (cString.equals("-"))
                 members.add(cString);
-            }
+
             wholeNum = "";
         }
 
@@ -212,6 +208,7 @@ public class home extends AppCompatActivity {
     private String nrValidation(String nr,ArrayList<String> myArray,boolean modifyArray) {
 
         if(Double.parseDouble(nr) % 1 ==0) {
+            //nr = nr.substring(0,nr.length()-2);
             nr = Integer.toString((int)Double.parseDouble(nr));
             if(modifyArray){
                 myArray.remove(0);
